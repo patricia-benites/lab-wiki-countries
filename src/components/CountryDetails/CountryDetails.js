@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export function CountryDetails({countries}) {
     const {alpha3Code} = useParams()

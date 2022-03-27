@@ -9,15 +9,14 @@ import {CountryDetails} from './components/CountryDetails/CountryDetails'
 function App() {
   const [countries, setCountries] = useState([])
 
-
-useEffect(() => {
   const fetchData = async() => {
     const response = await fetch('https://ih-countries-api.herokuapp.com/countries')
     const ctData = await response.json()
     setCountries(ctData)
   }
+useEffect(() => {
   fetchData();
-})
+}, [])
 
   return (
     <div className="App">
