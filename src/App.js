@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 import { Navbar } from './components/Navbar/Navbar';
 import { CountriesList } from './components/CountriesList/CountriesList';
-import jsonCountries from './countries.json'
 import { Routes, Route } from 'react-router-dom';
 import {CountryDetails} from './components/CountryDetails/CountryDetails'
 
 
 function App() {
-  const [countries, setCountries] = useState([...jsonCountries])
+  const [countries, setCountries] = useState([])
+
+
+useEffect(() => {
+  const fetchData = async() => {
+    const response = await fetch('https://ih-countries-api.herokuapp.com/countries')
+    const ctData = await response.json()
+    setCountries(ctData)
+  }
+  fetchData();
+})
+
   return (
     <div className="App">
       <Navbar />
